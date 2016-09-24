@@ -28,6 +28,9 @@ void create()
     glewExperimental = GL_TRUE;
 
     glViewport( 0, 0, WIDTH, HEIGHT );
+
+    glEnable    ( GL_DEPTH_TEST );
+    glCullFace  ( GL_BACK );
 }
 
 void clear( float r, float g, float b )

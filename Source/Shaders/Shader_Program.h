@@ -2,6 +2,7 @@
 #define SHADER_PROGRAM_H
 
 #include "../OpenGL/GLEW/glew.h"
+#include "../OpenGL/GLM/glm_transformations.h"
 
 #include <string>
 
@@ -17,7 +18,16 @@ class Shader_Program
         void stop   ();
 
     protected:
-        virtual void bindAttributes () = 0;
+        GLuint getUniformLocation ( const std::string& name );
+
+        virtual void bindAttributes         () = 0;
+        virtual void getAllUniformLocations () = 0;
+
+
+        void loadBool       ( GLuint location, bool  value );
+        void loadFloat      ( GLuint location, float value );
+        void loadVector3    ( GLuint location, const Vector3& value  );
+        void loadMatrix4    ( GLuint location, const Matrix4& matrix );
 
         void bindAttribute          ( GLuint location, const std::string& name );
 

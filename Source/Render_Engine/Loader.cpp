@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics/Image.hpp>
 
+#include "Raw_Model.h"
+
 Loader :: ~Loader ()
 {
     for(auto& i : this->vaoList)

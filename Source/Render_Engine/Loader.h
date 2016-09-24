@@ -4,7 +4,9 @@
 #include <vector>
 #include <memory>
 
-#include "Raw_Model.h"
+#include "../OpenGL/GLEW/glew.h"
+
+class Raw_Model;
 
 class Loader
 {

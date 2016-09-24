@@ -1,8 +1,8 @@
 #ifndef TEXTURED_MODEL_H
 #define TEXTURED_MODEL_H
 
-#include "Raw_Model.h"
-#include "Model_Texture.h"
+class Raw_Model;
+class Model_Texture;
 
 class Textured_Model
 {
