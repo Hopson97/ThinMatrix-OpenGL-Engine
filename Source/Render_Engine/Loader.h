@@ -12,7 +12,10 @@ class Loader
         ~Loader();
 
         Raw_Model loadToVAO ( const std::vector<GLfloat>& positions,
-                              const std::vector<GLuint>&  indices );
+                              const std::vector<GLuint>&  indices,
+                              const std::vector<GLfloat>&  texture );
+
+        GLuint loadTexture  ( const std::string& fileName );
 
 
     private:
@@ -20,11 +23,24 @@ class Loader
 
         GLuint createVAO ();
         GLuint createVBO ( GLenum type );
-        void storeDataInAttributeList ( int attributeID, const std::vector<GLfloat>& data );
         void unbindVAO();
+
+        template<typename T>
+        void storeDataInAttributeList ( int attributeID, int coordCount, const std::vector<T>& data )
+        {
+            createVBO( GL_ARRAY_BUFFER );
+            glBufferData ( GL_ARRAY_BUFFER, data.size() * sizeof ( data.at( 0 ) ), data.data(), GL_STATIC_DRAW );
+
+            glVertexAttribPointer       ( attributeID, coordCount, GL_FLOAT, GL_FALSE, 0, ( GLvoid* ) 0 );
+            glEnableVertexAttribArray   ( attributeID );
+
+            glBindBuffer ( GL_ARRAY_BUFFER, 0 );
+
+        }
 
         std::vector<GLuint> vaoList;
         std::vector<GLuint> vboList;
+        std::vector<GLuint> textureList;
 };
 
 #endif // LOADER_H

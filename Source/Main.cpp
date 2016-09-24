@@ -6,8 +6,13 @@
 #include "Render_Engine/Display_Manager.h"
 #include "Render_Engine/Loader.h"
 #include "Render_Engine/Renderer.h"
-#include "Render_Engine/Raw_Model.h"
+
 #include "Shaders/Static_Shader.h"
+
+#include "Models/Raw_Model.h"
+#include "Models/Textured_Model.h"
+
+#include "Model_Texture.h"
 
 void checkForClose  ( sf::RenderWindow& window );
 void clearWindow    ();
@@ -34,13 +39,24 @@ int main()
         3, 1, 2
     };
 
-    Raw_Model model = loader.loadToVAO( vertices, indices );
+    std::vector<GLfloat> texture =
+    {
+        0, 0,
+        0, 1,
+        1, 1,
+        1, 0
+    };
+
+    Raw_Model model = loader.loadToVAO( vertices, indices, texture );
+
+    Model_Texture modelTexture ( loader.loadTexture( "cow" ) );
+    Textured_Model textureModel ( model, modelTexture );
 
     while ( Display_Manager::isOpen() ) {
         Display_Manager::clear();
 
         shader.start();
-        renderer.render( model );
+        renderer.render( textureModel );
         shader.stop();
 
 

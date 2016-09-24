@@ -2,9 +2,9 @@
 
 #include "shader_loader.h"
 
-Shader_Program::Shader_Program ( const std::string vertexFile, const std::string fragmentString )
+Shader_Program::Shader_Program ( const std::string& vertexFile, const std::string& fragmentString )
 {
-    //loadShader( vertexFile, fragmentString, m_id, m_vertexId, m_fragmentId );
+    loadShader( vertexFile, fragmentString, m_id, m_vertexId, m_fragmentId );
 }
 
 Shader_Program :: Shader_Program ( GLuint id, GLuint vertexId, GLuint fragmentId )

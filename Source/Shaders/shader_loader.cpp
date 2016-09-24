@@ -78,7 +78,7 @@ namespace
         if ( !success )
         {
             glGetShaderInfoLog (id, 512, NULL, infoLog );
-            throw std::runtime_error ( errorType + "\n" + infoLog  );
+            throw std::runtime_error ( errorType + "\n Error is: " + infoLog  );
         }
     }
 } //Anon namespace

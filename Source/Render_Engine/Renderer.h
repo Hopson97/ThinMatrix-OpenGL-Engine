@@ -1,14 +1,14 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-#include "Raw_Model.h"
+#include "Textured_Model.h"
 
 class Renderer
 {
     public:
         void prepare ();
 
-        void render ( const Raw_Model& model );
+        void render ( const Textured_Model& model );
 
     protected:
 

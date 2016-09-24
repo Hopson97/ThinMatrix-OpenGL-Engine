@@ -8,7 +8,7 @@
 class Shader_Program
 {
     public:
-        Shader_Program  ( const std::string vertexFile, const std::string fragmentString );
+        Shader_Program  ( const std::string& vertexFile, const std::string& fragmentString );
         Shader_Program  ( GLuint id, GLuint vertexId, GLuint fragmentId );
 
         ~Shader_Program ();
