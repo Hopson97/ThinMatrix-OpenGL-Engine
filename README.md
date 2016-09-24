@@ -34,4 +34,4 @@ This was making an OBJLoader, though I decided to be lazy and just use my friend
 
 Completed 24/09/2016
 
-Image: ![stall](http://imgur.com/a/mbdrA "stall")
+Image: ![stall]( http://i.imgur.com/buVdXmv.png "stall")
