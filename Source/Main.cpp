@@ -37,14 +37,14 @@ int main()
     Model_Texture modelTexture ( loader.loadTexture( "stall" ) );
     Textured_Model textureModel ( model, modelTexture );
 
-    Entity entity ( textureModel, { 0, 0, -5 } );
+    Entity entity ( textureModel, { 0, -3, -25 } );
 
     Camera camera;
 
     while ( Display_Manager::isOpen() ) {
         Display_Manager::clear();
 
-        entity.rotate( { 0.05, 0.05, 0.05 } );
+        entity.rotate( { 0, 1, 0 } );
 
         camera.move();
 

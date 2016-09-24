@@ -36,6 +36,8 @@ GLuint Loader :: loadTexture ( const std::string& fileName )
     sf::Image image;
     image.loadFromFile( "Data/Textures/" + fileName + ".png" );
 
+    image.flipVertically    ();
+
     GLuint textureID;
     glGenTextures( 1, &textureID );
     textureList.push_back( textureID );

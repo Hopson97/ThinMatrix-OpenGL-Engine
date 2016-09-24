@@ -138,6 +138,8 @@ namespace OBJ_Loader
         return loader.loadToVAO( vertexArray, indices, textureArray );
     }
     */
+
+    //The code below this comment was not written by me, so all credit goes to github use Ruixel
 template<typename T>
 void insertIntoFloatVector(std::vector<T>* vec, std::istringstream* ss,
                                       size_t arraySize)
@@ -151,7 +153,7 @@ void insertIntoFloatVector(std::vector<T>* vec, std::istringstream* ss,
         *ss >> x[0] >> x[1] >> x[2];
 
     T tArray;
-    for(int i = 0; i<arraySize; i++)
+    for(size_t i = 0; i<arraySize; i++)
         tArray[i] = stof(x[i]);
     vec->push_back(tArray);
 
@@ -168,7 +170,7 @@ void insertIntoStringVector(std::vector<std::string>* vec, std::istringstream* s
         vec->push_back(x[i]);
 }
 
-Raw_Model loadModel(const std::string fileName, Loader& loader)
+Raw_Model loadModel(const std::string& fileName, Loader& loader)
 {
     // OBJ File Vectors
     std::vector<vector3f> vertices, normals;
@@ -186,7 +188,7 @@ Raw_Model loadModel(const std::string fileName, Loader& loader)
 
     // Attempt to read file, if error occurs it returns a nullptr
     try{
-        objFile.open(fileName);
+        objFile.open("Data/Models/" + fileName + ".obj");
         obj << objFile.rdbuf();
         objFile.close();
 

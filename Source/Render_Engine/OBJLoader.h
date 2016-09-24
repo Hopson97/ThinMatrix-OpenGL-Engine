@@ -9,7 +9,7 @@ class Loader;
 
 namespace OBJ_Loader
 {
-    Raw_Model loadModel ( const std::string fileName, Loader& loader );
+    Raw_Model loadModel ( const std::string& fileName, Loader& loader );
 }
 
 #endif // OBJLOADER_H

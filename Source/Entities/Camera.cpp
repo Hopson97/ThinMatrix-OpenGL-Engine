@@ -6,19 +6,19 @@ void Camera :: move ()
 {
     if  ( sf::Keyboard::isKeyPressed( sf::Keyboard::W ) )
     {
-        m_position.z -= 0.02;
+        m_position.z -= 0.2;
     }
     if  ( sf::Keyboard::isKeyPressed( sf::Keyboard::D ) )
     {
-        m_position.x += 0.02;
+        m_position.x += 0.2;
     }
     if  ( sf::Keyboard::isKeyPressed( sf::Keyboard::A ) )
     {
-        m_position.x -= 0.02;
+        m_position.x -= 0.2;
     }
     if  ( sf::Keyboard::isKeyPressed( sf::Keyboard::S ) )
     {
-        m_position.z += 0.02;
+        m_position.z += 0.2;
     }
 }
 
