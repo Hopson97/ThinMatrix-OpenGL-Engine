@@ -16,3 +16,13 @@ Yes sorry, I got the numbers mixed up.
 Completed 24/09/2016
 
 Image: ![Cow](http://i.imgur.com/VpRC1BA.png "Cow")
+
+
+___
+
+##Tutorial 8
+This was a very fun tutorial.
+
+Completed 24/09/2016
+
+Image: ![Cow](http://i.imgur.com/VvsY6nW.png "Cow")
