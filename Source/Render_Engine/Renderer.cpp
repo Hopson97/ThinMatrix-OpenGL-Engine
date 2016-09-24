@@ -9,7 +9,7 @@ void Renderer :: render( const Raw_Model& model )
 {
     glBindVertexArray ( model.getVaoID() );
 
-    glDrawArrays( GL_TRIANGLES, 0, model.getVertexCount() );
+    glDrawElements( GL_TRIANGLES, model.getVertexCount(), GL_UNSIGNED_INT, 0 );
 
     glBindVertexArray ( 0 );
 }

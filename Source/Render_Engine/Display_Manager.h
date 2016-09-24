@@ -4,7 +4,7 @@
 namespace Display_Manager
 {
     void create ();
-    void clear  ();
+    void clear  ( float r = 0, float g = 0, float b = 0 );
     void update ();
     void close  ();
     bool isOpen ();

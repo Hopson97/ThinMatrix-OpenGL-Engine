@@ -30,10 +30,10 @@ void create()
     glViewport( 0, 0, WIDTH, HEIGHT );
 }
 
-void clear()
+void clear( float r, float g, float b )
 {
     glClear     ( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-    glClearColor( 0, 0, 0, 1 );
+    glClearColor( r, g, b, 1 );
 }
 
 
