@@ -40,11 +40,11 @@ int main()
 
 
     Raw_Model       dragonModelRaw = OBJ_Loader::loadModel( "dragon", loader );
-    Model_Texture   dragonTexture   ( loader.loadTexture( "white" ) );
+    Model_Texture   dragonTexture   ( loader.loadTexture( "cow" ) );
     Textured_Model  dragonModel     ( dragonModelRaw, dragonTexture );
-    Entity          dragon          ( dragonModel, { 10, -5, -10 } );
+    Entity          dragon          ( dragonModel, { 10, -5, -10 }, { 0, 0, 0 }, { 3, 3, 3 } );
 
-    Light light ( { 1.0f, 1.0f, -5.0f }, { 0.5f, 1.0f, 0.5f } );
+    Light light ( { 1.0f, 1.0f, -5.0f }, { 1, 1, 1 } );
 
     Camera camera;
 
@@ -52,7 +52,6 @@ int main()
         Display_Manager::clear( 0.3, 0.13, 0.7 );
 
         stall.rotate( { 0, 0.1, 0 } );
-        dragon.rotate( { 0, -0.1, 0 } );
         camera.move();
 
         shader.start();

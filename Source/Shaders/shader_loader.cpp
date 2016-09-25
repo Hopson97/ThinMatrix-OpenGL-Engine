@@ -8,7 +8,6 @@ namespace
 {
     std::string getSource   ( const std::string& filePath );
     GLuint compileShader    ( const GLchar* source, GLenum type );
-    GLuint createProgram    ( GLuint vertexId, GLuint fragmentId );
     void checkForErrors     ( GLuint id, GLenum status, const std::string& errorType );
 
     //Reads the file and converts to a GLchar* for OpenGL to use
