@@ -1,4 +1,7 @@
-#include "Renderer.h"
+#include "Entity_Renderer.h"
+
+#include <SFML/Graphics.hpp>
+#include <iostream>
 
 #include "Entity.h"
 #include "Textured_Model.h"
@@ -8,16 +11,15 @@
 #include "Maths.h"
 #include "Display_Manager.h"
 
-Renderer :: Renderer ( Static_Shader& shader )
+Entity_Renderer :: Entity_Renderer ( Static_Shader& shader, const Matrix4& projectionMatrix )
 :   m_shader ( &shader )
 {
-    projectionMatrix = glm::perspective( FIELD_OF_VIEW, (float)Display_Manager::WIDTH / Display_Manager::HEIGHT, NEAR_PLANE, FAR_PLANE );
     shader.start();
     shader.loadProjectionMatrix( projectionMatrix );
     shader.stop();
 }
 
-void Renderer :: render ( const std::map< const Textured_Model*, std::vector< const Entity* > >& entities )
+void Entity_Renderer :: render ( const std::map< const Textured_Model*, std::vector< const Entity* > >& entities )
 {
     for ( auto& model : entities ) {
         prepareModel ( *model.first );
@@ -30,7 +32,7 @@ void Renderer :: render ( const std::map< const Textured_Model*, std::vector< co
     }
 }
 
-void Renderer :: prepareModel ( const Textured_Model& model )
+void Entity_Renderer :: prepareModel ( const Textured_Model& model )
 {
     const auto& rawModel  = model.getRawModel ();
     glBindVertexArray ( rawModel.getVaoID() );
@@ -42,12 +44,12 @@ void Renderer :: prepareModel ( const Textured_Model& model )
     glBindTexture( GL_TEXTURE_2D, model.getTexture().getID() );
 }
 
-void Renderer :: unbindModel ( const Textured_Model& model )
+void Entity_Renderer :: unbindModel ( const Textured_Model& model )
 {
     glBindVertexArray ( 0 );
 }
 
-void Renderer :: prepareInstance ( const Entity& entity )
+void Entity_Renderer :: prepareInstance ( const Entity& entity )
 {
     Matrix4 transformation = Maths::createTransforrmationMatrix( entity.getPosition(),
                                                                  entity.getRotation(),

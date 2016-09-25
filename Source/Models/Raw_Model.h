@@ -6,6 +6,8 @@
 class Raw_Model
 {
     public:
+        Raw_Model() = default;
+
         Raw_Model( GLuint vao, GLuint vertexCount );
 
         GLuint getVaoID         () const;

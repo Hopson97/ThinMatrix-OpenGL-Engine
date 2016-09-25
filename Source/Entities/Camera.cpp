@@ -20,6 +20,24 @@ void Camera :: move ()
     {
         m_position.z += 0.2;
     }
+
+    if  ( sf::Keyboard::isKeyPressed( sf::Keyboard::Left ) )
+    {
+        m_rotation.y -= 5;
+    }
+    if  ( sf::Keyboard::isKeyPressed( sf::Keyboard::Right ) )
+    {
+        m_rotation.y += 5;
+    }
+
+    if  ( sf::Keyboard::isKeyPressed( sf::Keyboard::Up ) )
+    {
+        m_rotation.x -= 5;
+    }
+    if  ( sf::Keyboard::isKeyPressed( sf::Keyboard::Down ) )
+    {
+        m_rotation.x += 5;
+    }
 }
 
 const Vector3& Camera :: getPosition() const

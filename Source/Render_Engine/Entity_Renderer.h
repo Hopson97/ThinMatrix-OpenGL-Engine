@@ -13,10 +13,10 @@ class Entity;
 class Textured_Model;
 
 
-class Renderer
+class Entity_Renderer
 {
     public:
-        Renderer    ( Static_Shader& shader );
+        Entity_Renderer ( Static_Shader& shader, const Matrix4& projectionMatrix );
 
         void render ( const std::map< const Textured_Model*, std::vector< const Entity* > >& entities );
 
@@ -24,12 +24,6 @@ class Renderer
         void prepareModel      ( const Textured_Model& model );
         void unbindModel        ( const Textured_Model& model );
         void prepareInstance    ( const Entity& entity );
-
-        constexpr static float FIELD_OF_VIEW = 90;
-        constexpr static float NEAR_PLANE    = 0.01;
-        constexpr static float FAR_PLANE     = 1000;
-
-        Matrix4 projectionMatrix;
 
         Static_Shader* m_shader;
 };

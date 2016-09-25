@@ -16,6 +16,10 @@
 
 #include "Model_Texture.h"
 
+#include "Terrain.h"
+#include "Terrain_Render.h"
+#include "Terrain_Shader.h"
+
 #include "Entity.h"
 #include "Camera.h"
 #include "Light.h"
@@ -35,35 +39,28 @@ int main()
 
 
 
-    Raw_Model       dragonModelRaw = OBJ_Loader::loadModel( "cube", loader );
-    Model_Texture   dragonTexture   ( loader.loadTexture( "grass" ), 1, 1 );
+    Raw_Model       dragonModelRaw = OBJ_Loader::loadModel( "dragon", loader );
+    Model_Texture   dragonTexture   ( loader.loadTexture( "grass" ), 10, 1 );
     Textured_Model  dragonModel     ( dragonModelRaw, dragonTexture );
+    Entity dragon ( dragonModel );
+
+    Terrain terrain     ( 0, -1, loader, dragonTexture );
+    Terrain terrain2    ( 1, -1, loader, dragonTexture );
 
     Light light ( { 1.0f, 100.0f, 50.0f }, { 1, 1, 1 } );
-
     Camera camera;
-
     Master_Renderer renderer;
 
     FPS fps;
 
-    float size = 25;
-    std::vector<Entity> dragons;
-    for ( int x = 0 ; x < size ; x++ ) {
-        for ( int y = -size ; y < 0 ; y++ ) {
-            for ( int z = -size ; z < 0 ; z++ ) {
-                dragons.emplace_back ( dragonModel, Vector3{ x * 2, y * 2, z * 2 } );
-            }
-        }
-    }
-    std::cout << dragons.size() << std::endl;
-
     while ( Display_Manager::isOpen() ) {
         Display_Manager::clear( 0.3, 0.13, 0.7 );
 
-        for ( auto& dragon : dragons ) {
-            renderer.processEntity( dragon );
-        }
+        renderer.processTerrain ( terrain  );
+        renderer.processTerrain ( terrain2 );
+
+        renderer.processEntity( dragon );
+
 
         renderer.render( light, camera );
 
