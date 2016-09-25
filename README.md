@@ -15,7 +15,8 @@ Yes sorry, I got the numbers mixed up.
 
 Completed 24/09/2016
 
-Image: ![Cow](http://i.imgur.com/VpRC1BA.png "Cow")
+Image: 
+![Cow](http://i.imgur.com/VpRC1BA.png "Cow")
 
 
 ___
@@ -25,7 +26,8 @@ This was a very fun tutorial.
 
 Completed 24/09/2016
 
-Image: ![Cow](http://i.imgur.com/VvsY6nW.png "Cow")
+Image: 
+![Cow](http://i.imgur.com/VvsY6nW.png "Cow")
 
 ___
 
@@ -34,15 +36,18 @@ This was making an OBJLoader, though I decided to be lazy and just use my friend
 
 Completed 24/09/2016
 
-Image: ![stall]( http://i.imgur.com/buVdXmv.png "stall")
+Image: 
+![stall]( http://i.imgur.com/buVdXmv.png "stall")
 
 ##Tutorial 11 
 This was basic lighting stuff ft. Stanford Dragon
 
-Image:  ![dragon]( http://i.imgur.com/JXbJZLO.png "dragon")
+Image:  
+![dragon]( http://i.imgur.com/JXbJZLO.png "dragon")
 
 
 ##Tutorial 12 
 Specular lighting.
 
-Image: ![dragon]( http://i.imgur.com/X5OchMv.png "dragon")
+Image: 
+![dragon]( http://i.imgur.com/X5OchMv.png "dragon")
