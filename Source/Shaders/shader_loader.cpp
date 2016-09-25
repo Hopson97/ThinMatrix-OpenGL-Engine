@@ -52,22 +52,6 @@ namespace
         return id;
     }
 
-
-    //Creates the shader ID
-    GLuint createProgram ( GLuint vertexId, GLuint fragmentId )
-    {
-        GLuint program = glCreateProgram();
-        glAttachShader ( program, vertexId   );
-        glAttachShader ( program, fragmentId );
-        glLinkProgram  ( program );
-
-        checkForErrors( program, GL_LINK_STATUS, "Error linking shaders." );
-
-        return program;
-    }
-
-
-
     //Checks for errors and prints them + throws an exception if one is found
     void checkForErrors ( GLuint id, GLenum status, const std::string& errorType )
     {
@@ -92,10 +76,5 @@ void  loadShader( const std::string& vertexFilePath,
 
     vertexId   = compileShader( c_vertexSource.c_str(),   GL_VERTEX_SHADER   );
     fragmentId = compileShader( c_fragmentSource.c_str(), GL_FRAGMENT_SHADER );
-
-    id = createProgram( vertexId, fragmentId );
-
-    glDeleteShader ( vertexId );
-    glDeleteShader ( fragmentId );
 }
 

@@ -17,8 +17,8 @@ typedef std::array<std::string, 3> faceArray;
 
 namespace OBJ_Loader
 {
-    /*
-    void split ( const std::string &s, char delim, std::vector<std::string> &elems )
+
+    void split ( const std::string &s, char delim, std::vector<std::string>& elems )
     {
         std::stringstream ss;
         ss.str(s);
@@ -28,7 +28,7 @@ namespace OBJ_Loader
         }
     }
 
-    std::vector<std::string> split ( const std::string &s, char delim )
+    std::vector<std::string> split ( const std::string& s, char delim )
     {
         std::vector<std::string> elems;
         split( s, delim, elems );
@@ -42,6 +42,7 @@ namespace OBJ_Loader
                                 std::vector<GLfloat> &      textureArray,
                                 std::vector<GLfloat> &      normalArray )
     {
+        std::cout << vertexData.at( 0 ) << std::endl;
         GLuint currentVertexPointer = std::stoi ( vertexData.at( 0 ) ) - 1;
         indices.push_back( currentVertexPointer );
 
@@ -54,8 +55,8 @@ namespace OBJ_Loader
         normalArray[currentVertexPointer * 3 + 1 ]  = currentNorm.y;
         normalArray[currentVertexPointer * 3 + 2 ]  = currentNorm.z;
     }
-
-    Raw_Model loadModel(const std::string fileName, Loader& loader)
+/*
+    Raw_Model loadModel(const std::string& fileName, Loader& loader)
     {
         std::ifstream inFile ( "Data/Models/" + fileName + ".obj");
 
@@ -105,10 +106,6 @@ namespace OBJ_Loader
 
         while ( true ) {
             std::vector<std::string> splitline = split( line, ' ');
-            for ( auto& word : splitline) {
-                std::cout << word << " ";
-            }
-            std::cout << "\n";
 
             std::vector<std::string> vertex1 = split( splitline.at( 1 ), '/');
             std::vector<std::string> vertex2 = split( splitline.at( 2 ), '/');
@@ -137,7 +134,7 @@ namespace OBJ_Loader
 
         return loader.loadToVAO( vertexArray, indices, textureArray );
     }
-    */
+*/
 
     //The code below this comment was not written by me, so all credit goes to github use Ruixel
 template<typename T>
@@ -255,7 +252,7 @@ Raw_Model loadModel(const std::string& fileName, Loader& loader)
 
     }
 
-    return loader.loadToVAO( a_vertices, a_indices, a_texCoords );
+    return loader.loadToVAO( a_vertices, a_indices, a_normals, a_texCoords );
 }
 
 }

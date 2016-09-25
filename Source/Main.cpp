@@ -16,6 +16,7 @@
 
 #include "Entity.h"
 #include "Camera.h"
+#include "Light.h"
 
 #include "OBJLoader.h"
 
@@ -32,27 +33,34 @@ int main()
     Renderer        renderer ( shader );
 
     //Raw_Model model = loader.loadToVAO( vertices, indices, texture );
-    Raw_Model model = OBJ_Loader::loadModel( "stall", loader );
+    Raw_Model       stallModelRaw = OBJ_Loader::loadModel( "stall", loader );
+    Model_Texture   stallTexture    ( loader.loadTexture( "stall" ) );
+    Textured_Model  stallModel      ( stallModelRaw, stallTexture );
+    Entity          stall           ( stallModel, { -5, -4, -25 } );
 
-    Model_Texture modelTexture ( loader.loadTexture( "stall" ) );
-    Textured_Model textureModel ( model, modelTexture );
 
-    Entity entity ( textureModel, { 0, -3, -25 } );
+    Raw_Model       dragonModelRaw = OBJ_Loader::loadModel( "dragon", loader );
+    Model_Texture   dragonTexture   ( loader.loadTexture( "white" ) );
+    Textured_Model  dragonModel     ( dragonModelRaw, dragonTexture );
+    Entity          dragon          ( dragonModel, { 0, -5, -25 } );
+
+    Light light ( { 0.0f, 0.0f, -20.0f }, { 1.0f, 1.0f, 1.0f } );
 
     Camera camera;
 
     while ( Display_Manager::isOpen() ) {
         Display_Manager::clear();
 
-        entity.rotate( { 0, 1, 0 } );
-
+        stall.rotate( { 0, 0.1, 0 } );
+        dragon.rotate( { 0, -0.1, 0 } );
         camera.move();
 
         shader.start();
         shader.loadViewMatrix( camera );
+        shader.loadLight( light );
 
-
-        renderer.render( entity, shader );
+       // renderer.render ( stall, shader );
+        renderer.render ( dragon, shader );
         shader.stop();
 
 

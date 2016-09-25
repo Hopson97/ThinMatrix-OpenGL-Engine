@@ -17,8 +17,9 @@ Loader :: ~Loader ()
 }
 
 
-Raw_Model Loader :: loadToVAO( const std::vector<GLfloat>& positions,
-                               const std::vector<GLuint>&  indices,
+Raw_Model Loader :: loadToVAO( const std::vector<GLfloat>&  positions,
+                               const std::vector<GLuint>&   indices,
+                               const std::vector<GLfloat>&  normals,
                                const std::vector<GLfloat>&  texture )
 {
     GLuint id = createVAO();
@@ -26,6 +27,7 @@ Raw_Model Loader :: loadToVAO( const std::vector<GLfloat>& positions,
 
     storeDataInAttributeList( 0, 3, positions );
     storeDataInAttributeList( 1, 2, texture );
+    storeDataInAttributeList( 2, 3, normals );
     unbindVAO();
 
     return { id, indices.size() };
