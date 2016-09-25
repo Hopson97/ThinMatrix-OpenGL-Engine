@@ -40,3 +40,9 @@ Image: ![stall]( http://i.imgur.com/buVdXmv.png "stall")
 This was basic lighting stuff ft. Stanford Dragon
 
 Image:  ![dragon]( http://i.imgur.com/JXbJZLO.png "dragon")
+
+
+##Tutorial 12 
+Specular lighting.
+
+Image: ![dragon]( http://i.imgur.com/X5OchMv.png "dragon")
