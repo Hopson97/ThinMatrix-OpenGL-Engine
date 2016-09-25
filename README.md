@@ -39,4 +39,4 @@ Image: ![stall]( http://i.imgur.com/buVdXmv.png "stall")
 ##Tutorial 11 
 This was basic lighting stuff ft. Stanford Dragon
 
-Image:  ![dragon]( blob:http://imgur.com/3e604d22-bab0-4d90-9330-b7320b652005 "dragon")
+Image:  ![dragon]( http://i.imgur.com/JXbJZLO.png "dragon")
