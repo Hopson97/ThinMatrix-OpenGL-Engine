@@ -12,7 +12,7 @@ class Camera
         const Vector3& getRotation () const;
 
     private:
-        Vector3 m_position;
+        Vector3 m_position = { 0, 1, 0 };
         Vector3 m_rotation;
 };
 

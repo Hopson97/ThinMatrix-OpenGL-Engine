@@ -17,13 +17,13 @@ Renderer :: Renderer ( Static_Shader& shader )
     shader.stop();
 }
 
-void Renderer :: render ( const std::map< const Textured_Model*, std::vector<Entity>>& entities )
+void Renderer :: render ( const std::map< const Textured_Model*, std::vector< const Entity* > >& entities )
 {
     for ( auto& model : entities ) {
         prepareModel ( *model.first );
 
         for ( auto& enity : model.second ) {
-            prepareInstance( enity );
+            prepareInstance( *enity );
             glDrawElements( GL_TRIANGLES, model.first->getRawModel().getVertexCount(), GL_UNSIGNED_INT, 0 );
         }
         unbindModel( *model.first );

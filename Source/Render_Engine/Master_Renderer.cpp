@@ -28,10 +28,10 @@ void Master_Renderer :: processEntity ( const Entity& entity )
     auto model = &entity.getModel();
 
     if ( m_entities.count( model ) ) {
-        m_entities[model].push_back( entity );
+        m_entities[model].push_back( &entity );
     } else {
-        std::vector<Entity> newBatch;
-        newBatch.push_back( entity );
+        std::vector< const Entity* > newBatch;
+        newBatch.push_back( &entity );
         m_entities[ model ] = newBatch;
     }
 }

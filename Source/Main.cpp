@@ -1,4 +1,4 @@
-
+#include <iostream>
 
 #include <SFML/Graphics.hpp>
 #include "OpenGL/GLEW/glew.h"
@@ -36,10 +36,10 @@ int main()
 
 
     Raw_Model       dragonModelRaw = OBJ_Loader::loadModel( "cube", loader );
-    Model_Texture   dragonTexture   ( loader.loadTexture( "cow" ), 1, 1 );
+    Model_Texture   dragonTexture   ( loader.loadTexture( "grass" ), 1, 1 );
     Textured_Model  dragonModel     ( dragonModelRaw, dragonTexture );
 
-    Light light ( { 1.0f, 1.0f, -5.0f }, { 1, 1, 1 } );
+    Light light ( { 1.0f, 100.0f, 50.0f }, { 1, 1, 1 } );
 
     Camera camera;
 
@@ -47,14 +47,16 @@ int main()
 
     FPS fps;
 
+    float size = 25;
     std::vector<Entity> dragons;
-    for ( int x = 0 ; x < 10 ; x++ ) {
-        for ( int y = 0 ; y < 10 ; y++ ) {
-            for ( int z = 0 ; z < 10 ; z++ ) {
-                dragons.emplace_back ( dragonModel, Vector3{ x, y, z } );
+    for ( int x = 0 ; x < size ; x++ ) {
+        for ( int y = -size ; y < 0 ; y++ ) {
+            for ( int z = -size ; z < 0 ; z++ ) {
+                dragons.emplace_back ( dragonModel, Vector3{ x * 2, y * 2, z * 2 } );
             }
         }
     }
+    std::cout << dragons.size() << std::endl;
 
     while ( Display_Manager::isOpen() ) {
         Display_Manager::clear( 0.3, 0.13, 0.7 );

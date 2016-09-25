@@ -23,7 +23,7 @@ class Master_Renderer
         void processEntity ( const Entity& entity );
 
     private:
-        std::map< const Textured_Model*, std::vector<Entity>> m_entities;
+        std::map< const Textured_Model*, std::vector< const Entity* > > m_entities;
 
         Static_Shader m_shader;
         Renderer      m_renderer;
