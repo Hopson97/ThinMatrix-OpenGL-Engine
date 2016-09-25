@@ -13,8 +13,8 @@ class Textured_Model
         const Model_Texture&    getTexture  () const;
 
     private:
-        Raw_Model&       m_rawModel;
-        Model_Texture&   m_modelTexture;
+        Raw_Model*       m_rawModel;
+        Model_Texture*   m_modelTexture;
 };
 
 #endif // TEXTURED_MODEL_H

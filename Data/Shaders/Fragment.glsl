@@ -7,7 +7,7 @@ in vec3 toLightSource;
 
 out vec4 outColor;
 
-uniform sampler2D textureSampler;
+uniform sampler2D textureOfModel;
 
 uniform vec3 lightColour;
 
@@ -17,25 +17,9 @@ void main ( void )
     vec3 unitLightVector    = normalize ( toLightSource );
 
     float nDot1 = dot ( unitNormal, unitLightVector );
-    float brightness = max ( nDot1, 0 );
+    float brightness = max ( nDot1, 0.1 );
 
     vec3 diffuse = brightness * lightColour;
 
-    vec4 col = vec4 ( diffuse, 1.0 ) * texture ( textureSampler, textureCoords );
-
-    float value = 0.1;
-
-    if ( col.r <= value ) {
-        col.r = value;
-    }
-    if ( col.g <= value ) {
-        col.g = value;
-    }
-    if ( col.b <= value ) {
-        col.b = value;
-    }
-    outColor = col;
-
-    //outColor = vec4 ( diffuse, 1.0 ) * texture ( textureSampler, textureCoords );
-    //outColor = texture ( textureSampler, textureCoords );
+    outColor = vec4 ( diffuse, 1.0 ) * texture ( textureOfModel, textureCoords );
 }

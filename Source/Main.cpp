@@ -36,20 +36,20 @@ int main()
     Raw_Model       stallModelRaw = OBJ_Loader::loadModel( "stall", loader );
     Model_Texture   stallTexture    ( loader.loadTexture( "stall" ) );
     Textured_Model  stallModel      ( stallModelRaw, stallTexture );
-    Entity          stall           ( stallModel, { -5, -4, -25 } );
+    Entity          stall           ( stallModel, { -5, -4, -10 } );
 
 
     Raw_Model       dragonModelRaw = OBJ_Loader::loadModel( "dragon", loader );
     Model_Texture   dragonTexture   ( loader.loadTexture( "white" ) );
     Textured_Model  dragonModel     ( dragonModelRaw, dragonTexture );
-    Entity          dragon          ( dragonModel, { 0, -5, -25 } );
+    Entity          dragon          ( dragonModel, { 10, -5, -10 } );
 
-    Light light ( { 0.0f, 0.0f, -20.0f }, { 1.0f, 1.0f, 1.0f } );
+    Light light ( { 1.0f, 1.0f, -5.0f }, { 0.5f, 1.0f, 0.5f } );
 
     Camera camera;
 
     while ( Display_Manager::isOpen() ) {
-        Display_Manager::clear();
+        Display_Manager::clear( 0.3, 0.13, 0.7 );
 
         stall.rotate( { 0, 0.1, 0 } );
         dragon.rotate( { 0, -0.1, 0 } );
@@ -59,7 +59,7 @@ int main()
         shader.loadViewMatrix( camera );
         shader.loadLight( light );
 
-       // renderer.render ( stall, shader );
+        renderer.render ( stall, shader );
         renderer.render ( dragon, shader );
         shader.stop();
 

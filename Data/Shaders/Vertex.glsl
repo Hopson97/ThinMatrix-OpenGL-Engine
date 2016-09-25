@@ -5,6 +5,7 @@ layout (location = 1 )   in vec2 texture;
 layout (location = 3 )   in vec3 normal;
 
 out vec2 textureCoords;
+
 out vec3 surfaceNormal;
 out vec3 toLightSource;
 
@@ -16,9 +17,10 @@ uniform vec3 lightPosition;
 
 void main ( void )
 {
-    vec4 worldPosition = transformationMatrix * vec4 ( position.xyz, 1.0 );
+    vec4 worldPosition = transformationMatrix * vec4 ( position, 1.0f );
 
     gl_Position = projectionMatrix * viewMatrix * worldPosition;
+
     textureCoords = texture;
 
     surfaceNormal = ( transformationMatrix * vec4 ( normal, 0.0f ) ).xyz;
