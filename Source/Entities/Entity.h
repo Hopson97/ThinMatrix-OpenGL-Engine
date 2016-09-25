@@ -24,7 +24,7 @@ class Entity
         void scale  ( const Vector3& amount );
 
     private:
-        const Textured_Model& m_model;
+        const Textured_Model* m_model;
 
         Vector3 m_position;
         Vector3 m_rotation;

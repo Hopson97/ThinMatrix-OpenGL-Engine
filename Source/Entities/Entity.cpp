@@ -5,7 +5,7 @@
 Entity :: Entity( const Textured_Model& model,  Vector3 position,
                                                 Vector3 rotation,
                                                 Vector3 scale    )
-:   m_model ( model )
+:   m_model ( &model )
 ,   m_position ( position )
 ,   m_rotation ( rotation )
 ,   m_scale     ( scale )
@@ -29,7 +29,7 @@ const Vector3& Entity :: getScale() const
 
 const Textured_Model& Entity :: getModel() const
 {
-    return m_model;
+    return *m_model;
 }
 
 void Entity :: move ( const Vector3& amount)

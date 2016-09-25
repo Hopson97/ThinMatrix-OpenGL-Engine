@@ -240,10 +240,13 @@ Raw_Model loadModel(const std::string& fileName, Loader& loader)
             a_vertices.push_back(vertices.at(glf[0]-1).at(v));
 
         for (int v = 0; v < 2; v++)
+        {
             a_texCoords.push_back(textureCoordinates.at(glf[1]-1).at(v));
+        }
 
-        for (int v = 0; v < 3; v++)
+        for (int v = 0; v < 3; v++) {
             a_normals.push_back(normals.at(glf[2]-1).at(v));
+        }
 
         for (int v = 0; v < 3; v++) {
             a_indices.push_back(indexCount);

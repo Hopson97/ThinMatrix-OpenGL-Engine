@@ -8,9 +8,8 @@
 #include "Maths.h"
 #include "Display_Manager.h"
 
-#include "Static_Shader.h"
-
 Renderer :: Renderer ( Static_Shader& shader )
+:   m_shader ( &shader )
 {
     projectionMatrix = glm::perspective( FIELD_OF_VIEW, (float)Display_Manager::WIDTH / Display_Manager::HEIGHT, NEAR_PLANE, FAR_PLANE );
     shader.start();
@@ -18,27 +17,40 @@ Renderer :: Renderer ( Static_Shader& shader )
     shader.stop();
 }
 
-void Renderer :: render( const Entity& entity, Static_Shader& shader )
+void Renderer :: render ( const std::map< const Textured_Model*, std::vector<Entity>>& entities )
 {
-    const Textured_Model& model     = entity.getModel   ();
-    const Raw_Model&      rawModel  = model.getRawModel ();
+    for ( auto& model : entities ) {
+        prepareModel ( *model.first );
 
+        for ( auto& enity : model.second ) {
+            prepareInstance( enity );
+            glDrawElements( GL_TRIANGLES, model.first->getRawModel().getVertexCount(), GL_UNSIGNED_INT, 0 );
+        }
+        unbindModel( *model.first );
+    }
+}
+
+void Renderer :: prepareModel ( const Textured_Model& model )
+{
+    const auto& rawModel  = model.getRawModel ();
     glBindVertexArray ( rawModel.getVaoID() );
 
-
-    Matrix4 transformation = Maths::createTransforrmationMatrix( entity.getPosition(),
-                                                                 entity.getRotation(),
-                                                                 entity.getScale() );
-
-    shader.loadTransformationMatrix( transformation );
-
     const Model_Texture& t = model.getTexture();
-    shader.loadShineVariables( t.getShineDamper(), t.getReflectivity() );
+    m_shader->loadShineVariables( t.getShineDamper(), t.getReflectivity() );
 
     glActiveTexture ( GL_TEXTURE0 );
     glBindTexture( GL_TEXTURE_2D, model.getTexture().getID() );
+}
 
-    glDrawElements( GL_TRIANGLES, rawModel.getVertexCount(), GL_UNSIGNED_INT, 0 );
-
+void Renderer :: unbindModel ( const Textured_Model& model )
+{
     glBindVertexArray ( 0 );
+}
+
+void Renderer :: prepareInstance ( const Entity& entity )
+{
+    Matrix4 transformation = Maths::createTransforrmationMatrix( entity.getPosition(),
+                                                                 entity.getRotation(),
+                                                                 entity.getScale() );
+    m_shader->loadTransformationMatrix( transformation );
 }
