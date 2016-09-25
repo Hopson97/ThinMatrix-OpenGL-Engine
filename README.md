@@ -35,3 +35,8 @@ This was making an OBJLoader, though I decided to be lazy and just use my friend
 Completed 24/09/2016
 
 Image: ![stall]( http://i.imgur.com/buVdXmv.png "stall")
+
+##Tutorial 11 
+This was basic lighting stuff ft. Stanford Dragon
+
+Image:  ![dragon]( blob:http://imgur.com/3e604d22-bab0-4d90-9330-b7320b652005 "dragon")
