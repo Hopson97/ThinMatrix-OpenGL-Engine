@@ -51,3 +51,13 @@ Specular lighting.
 
 Image: 
 ![dragon]( http://i.imgur.com/X5OchMv.png "dragon")
+
+##Tutorial 13
+This was optimizing.
+
+His method of doing it is questionable, as bascially it creates a new vector for every model and then adds all the current entities into it's respective one, and then adds it into a map. Every frame. 
+
+Unforunatly I didn't test the performance before hand, but I did afterwards. With full optimizations (-O3) I managed to render this scene with an average of about 25 frames per second.
+
+Image: 
+![lots of cubes]( http://i.imgur.com/gDkc94K.png "cubes")
