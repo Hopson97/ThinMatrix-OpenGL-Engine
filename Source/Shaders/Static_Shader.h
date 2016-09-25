@@ -17,6 +17,8 @@ class Static_Shader : public Shader_Program
 
         void loadLight                  ( const Light& light ) const;
 
+        void loadShineVariables         ( float damper, float reflectivness );
+
     protected:
         void bindAttributes         () override;
         void getAllUniformLocations () override;
@@ -28,6 +30,9 @@ class Static_Shader : public Shader_Program
 
         GLuint locationLightPosition;
         GLuint locationLightColour;
+
+        GLuint locationShineDamper;
+        GLuint locationReflectivness;
 
         const std::string m_vertexFile      = "Data/Shaders/Vertex.glsl";
         const std::string m_fragmentFile    = "Data/Shaders/Fragment.glsl";

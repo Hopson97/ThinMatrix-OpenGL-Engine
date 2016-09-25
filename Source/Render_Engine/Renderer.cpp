@@ -32,6 +32,9 @@ void Renderer :: render( const Entity& entity, Static_Shader& shader )
 
     shader.loadTransformationMatrix( transformation );
 
+    const Model_Texture& t = model.getTexture();
+    shader.loadShineVariables( t.getShineDamper(), t.getReflectivity() );
+
     glActiveTexture ( GL_TEXTURE0 );
     glBindTexture( GL_TEXTURE_2D, model.getTexture().getID() );
 

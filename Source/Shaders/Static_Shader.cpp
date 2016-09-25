@@ -30,9 +30,16 @@ void Static_Shader :: loadProjectionMatrix ( const Matrix4& matrix ) const
 
 void Static_Shader :: loadLight ( const Light& light ) const
 {
-    loadVector3( locationLightPosition, light.getPosition() );
-    loadVector3( locationLightColour,   light.getColour()   );
+    loadVector3( locationLightPosition, light.getPosition () );
+    loadVector3( locationLightColour,   light.getColour   () );
 }
+
+void Static_Shader :: loadShineVariables ( float damper, float reflectivness )
+{
+    loadFloat( locationShineDamper,     damper          );
+    loadFloat( locationReflectivness,   reflectivness   );
+}
+
 
 
 void Static_Shader :: bindAttributes ()
@@ -48,6 +55,11 @@ void Static_Shader :: getAllUniformLocations ()
     locationTransformMatrix     = getUniformLocation( "transformationMatrix"    );
     locationProjectionMatrix    = getUniformLocation( "projectionMatrix"        );
     locationViewMatrix          = getUniformLocation( "viewMatrix"              );
-    locationLightPosition       = getUniformLocation( "lightPosition"           );
-    locationLightColour         = getUniformLocation( "lightColour"             );
+
+    locationLightPosition       = getUniformLocation( "lightPosition"   );
+    locationLightColour         = getUniformLocation( "lightColour"     );
+
+    locationShineDamper         = getUniformLocation( "shineDamper"     );
+    locationReflectivness       = getUniformLocation( "reflectivness"   );
+
 }

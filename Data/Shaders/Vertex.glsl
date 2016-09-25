@@ -9,6 +9,8 @@ out vec2 textureCoords;
 out vec3 surfaceNormal;
 out vec3 toLightSource;
 
+out vec3 toCameraVector;
+
 uniform mat4 transformationMatrix;
 uniform mat4 projectionMatrix;
 uniform mat4 viewMatrix;
@@ -25,4 +27,6 @@ void main ( void )
 
     surfaceNormal = ( transformationMatrix * vec4 ( normal, 0.0f ) ).xyz;
     toLightSource = lightPosition - worldPosition.xyz;
+
+    toCameraVector = ( inverse( viewMatrix ) * vec4 ( 0.0, 0.0, 0.0, 0.1 ) ).xyz - worldPosition.xyz;
 }
