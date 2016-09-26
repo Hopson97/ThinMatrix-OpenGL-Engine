@@ -38,6 +38,15 @@ void Camera :: move ()
     {
         m_rotation.x += 5;
     }
+
+    if  ( sf::Keyboard::isKeyPressed( sf::Keyboard::Space ) )
+    {
+        m_position.y += 1;
+    }
+    if  ( sf::Keyboard::isKeyPressed( sf::Keyboard::LShift ) )
+    {
+        m_position.y -= 1;
+    }
 }
 
 const Vector3& Camera :: getPosition() const

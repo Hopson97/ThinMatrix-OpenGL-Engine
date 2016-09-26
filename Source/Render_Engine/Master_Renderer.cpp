@@ -14,17 +14,17 @@ Master_Renderer :: Master_Renderer()
 
 void Master_Renderer :: render ( const Light& light, const Camera& camera )
 {
-    m_shader.start();
-    m_shader.loadLight( light );
-    m_shader.loadViewMatrix( camera );
-    m_entityRenderer.render( m_entities );
-    m_shader.stop();
+    m_shader.start          ();
+    m_shader.loadLight      ( light );
+    m_shader.loadViewMatrix ( camera );
+    m_entityRenderer.render ( m_entities );
+    m_shader.stop           ();
 
     m_terrainShader.start           ();
     m_terrainShader.loadLight       ( light );
     m_terrainShader.loadViewMatrix  ( camera );
-    m_terrainRenderer.render( m_terrains );
-    m_terrainShader.stop();
+    m_terrainRenderer.render        ( m_terrains );
+    m_terrainShader.stop            ();
 
     m_entities.clear();
     m_terrains.clear();

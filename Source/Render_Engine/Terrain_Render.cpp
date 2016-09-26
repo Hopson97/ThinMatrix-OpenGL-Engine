@@ -19,9 +19,9 @@ void Terrain_Render :: render ( std::vector< const Terrain* >& terrains )
         prepareTerrain  ( *terrain );
         loadModelMatrix ( *terrain );
         glDrawElements( GL_TRIANGLES, terrain->getModel().getVertexCount(), GL_UNSIGNED_INT, 0 );
-
         unbindModel();
     }
+
 }
 
 void Terrain_Render :: prepareTerrain ( const Terrain& terrain )

@@ -39,13 +39,13 @@ int main()
 
 
 
-    Raw_Model       dragonModelRaw = OBJ_Loader::loadModel( "dragon", loader );
+    Raw_Model       dragonModelRaw = OBJ_Loader::loadModel( "cube", loader );
     Model_Texture   dragonTexture   ( loader.loadTexture( "grass" ), 10, 1 );
     Textured_Model  dragonModel     ( dragonModelRaw, dragonTexture );
     Entity dragon ( dragonModel );
 
-    Terrain terrain     ( 0, -1, loader, dragonTexture );
-    Terrain terrain2    ( 1, -1, loader, dragonTexture );
+    Terrain terrain     ( 0, 0, loader, dragonTexture );
+    Terrain terrain2    ( 1, 0, loader, dragonTexture );
 
     Light light ( { 1.0f, 100.0f, 50.0f }, { 1, 1, 1 } );
     Camera camera;
