@@ -55,9 +55,10 @@ Image:
 ##Tutorial 13
 This was optimizing.
 
-His method of doing it is questionable, as bascially it creates a new vector for every model and then adds all the current entities into it's respective one, and then adds it into a map. Every frame. 
+His method of doing it is questionable, as basically it creates a new vector for every model and then adds all the current entities into it's respective one, and then adds it into a map. Every frame. 
 
-Unforunatly I didn't test the performance before hand, but I did afterwards. With full optimizations (-O3) I managed to render this scene with an average of about 25 frames per second. (Basically 35,000 cubes)
+Unfortunately I didn't test the performance before hand, but I did afterwards. With full optimizations (-O3) I managed to render this scene with an average of about 25 frames per second. (Basically 35,000 cubes)
 
 Image: 
 ![lots of cubes]( http://i.imgur.com/gDkc94K.png "cubes")
+
